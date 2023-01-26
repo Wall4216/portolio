@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-
 class AuthController extends Controller
 {
     public function register(Request $request)
@@ -37,7 +36,7 @@ class AuthController extends Controller
         $response = [
             'success' => true,
             'data' => $success,
-            'message' => 'User register succe'
+            'message' => 'User register successfully'
             ];
         return response()->json($response, 200);
     }
