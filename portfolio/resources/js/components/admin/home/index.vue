@@ -1,7 +1,7 @@
 <script setup>
 
 import {useRouter} from "vue-router";
-
+import Base from "../layouts/base.vue";
 const router = useRouter()
 const logout = () => {
     localStorage.removeItem('token')
@@ -10,6 +10,7 @@ const logout = () => {
 </script>
 
 <template>
+    <Base></Base>
     <h1>Welcome to admin</h1>
     <div>
     <router-link to="/">Welcome</router-link>
