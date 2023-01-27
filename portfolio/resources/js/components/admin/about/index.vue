@@ -8,9 +8,9 @@ let form = reactive({
     email: '',
     phone: '',
     address: '',
-    description: '',
-    tagline: '',
-    cv: '',
+    description : '',
+    tagline : '',
+    cv : '',
 })
 
 onMounted(async() =>{
@@ -24,9 +24,9 @@ onMounted(async() =>{
     }
 
     const getPhoto = () => {
-        let photo = "/img/logo.png"
+        let photo = "/img/avatar.png"
         if(form.photo) {
-            if (form.photo.indexOf('base64') !== -1) {
+            if (form.photo.indexOf('base64') != -1) {
                 photo = form.photo
             } else {
                 photo = 'img/upload' + form.photo
@@ -51,7 +51,9 @@ onMounted(async() =>{
         form.photo = reader.result
     }
     reader.readAsDataURL(file)
-
+    }
+    const updateAbout = () => {
+        console.log('form', form)
     }
 </script>
 
@@ -68,7 +70,7 @@ onMounted(async() =>{
                             <h1>About Us</h1>
                         </div>
                         <div class="titlebar_item">
-                            <div class="btn btn-secondary">
+                            <div class="btn btn-secondary" @click.prevent="updateAbout">
                                 Save Changes
                             </div>
                         </div>
@@ -101,7 +103,7 @@ onMounted(async() =>{
                         <div class="wrapper_right ">
                             <div class="card">
                                 <div class="avatar_profile">
-                                    <img :src="getPhoto" alt="" class="avatar_profile_img">
+                                    <img :src="getPhoto()" alt="" class="avatar_profile_img">
                                 </div>
                                 <input type="file" id="fileimg" @change="changePhoto"/>
                             </div>
@@ -117,7 +119,7 @@ onMounted(async() =>{
 
                         </div>
                         <div class="titlebar_item">
-                            <div class="btn btn-secondary">
+                            <div class="btn btn-secondary" @click.prevent="updateAbout">
                                 Save Changes
                             </div>
                         </div>
