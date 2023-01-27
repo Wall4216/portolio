@@ -28,14 +28,14 @@ let login = async() => {
 <template>
     <div class="login">
         <div class="formLogin">
-            <p class="text-danger" style="color:red" v-if="error">{{error}}</p>
+            <p class="text-danger"  style="color:red" v-if="error">{{error}}</p>
 
             <form @submit.prevent="login">
-            <input type="email" placeholder="Введите email" v-model="form.email">
+            <input type="email" class="input_auth" placeholder="Введите email" v-model="form.email">
             <br>
-            <input type="password" placeholder="Введите пароль" v-model="form.password">
+            <input type="password" class="input_auth"  placeholder="Введите пароль" v-model="form.password">
             <br>
-            <input type="submit" value="Login" class="submit">
+            <input type="submit"  value="Login" class="submit input_auth">
         </form>
         </div>
     </div>
@@ -71,7 +71,7 @@ export default {
     overflow: hidden;
 }
 
-input {
+.input_auth {
     background: rgba(228,232, 244, 0.8);
     background-position: 0.5em 0.6em;
     border: none;
@@ -84,10 +84,10 @@ input {
     transition: background-color 0.4s;
 
 }
-input:hover {
+.input_auth:hover {
     background-color: rgba(255,255,255,255);
 }
-input:focus {
+.input_auth:focus {
     background-color: rgba(255,255,255,255);
 }
 .submit {
