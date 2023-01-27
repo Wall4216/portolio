@@ -8,7 +8,6 @@
     <div class="base">
         <Header></Header>
         <sidebar></sidebar>
-        <h1>Admin layout</h1>
     </div>
 </template>
 
