@@ -1,8 +1,8 @@
 <script setup>
 import Base from "../layouts/base.vue";
-import {onMounted, reactive} from "vue";
+import {onMounted, ref} from "vue";
 
-let form = reactive({
+let form = ref({
     name: '',
     photo: '',
     email: '',
@@ -20,16 +20,16 @@ onMounted(async() =>{
     const getAbout = async() => {
         let response = await axios.get("/api/edit_about")
         form.value = response.data
-        console.log('response', response)
+        console.log('response', form.value)
     }
 
     const getPhoto = () => {
         let photo = "/img/avatar.png"
-        if(form.photo) {
-            if (form.photo.indexOf('base64') != -1) {
-                photo = form.photo
+        if(form.value.photo) {
+            if (form.value.photo.indexOf('base64') != -1) {
+                photo = form.value.photo
             } else {
-                photo = 'img/upload' + form.photo
+                photo = 'img/upload' + form.value.photo
             }
         }
         return photo
@@ -48,13 +48,39 @@ onMounted(async() =>{
         return false
         }
     reader.onloadend = (file) => {
-        form.photo = reader.result
+        form.value.photo = reader.result
     }
     reader.readAsDataURL(file)
     }
-    const updateAbout = () => {
-        console.log('form', form)
+
+    const uploadCv = (e) => {
+        let file = e.target.files[0]
+        let reader = new FileReader();
+        let limit = 1024*1024*2;
+        if (file['size'] > limit) {
+            swal({
+                icon: 'error',
+                title: 'Oooops',
+                text: 'Ты загружаешь большой файл'
+            })
+            return false
+        }
+        reader.onloadend = (file) => {
+            form.cv = reader.result
+        }
+        reader.readAsDataURL(file)
+
     }
+    const updateAbout = async () => {
+        await axios.post(`/api/update_about/${form.value.id}`, form.value)
+            .then(response=>{
+                to.fire({
+                    icon: "access",
+                    title: "Update successfully"
+                })
+            })
+    }
+
 </script>
 
 <template>
@@ -109,7 +135,7 @@ onMounted(async() =>{
                             </div>
                             <div class="card">
                                 <p>CV</p>
-                                <input type="file" id="filecv" />
+                                <input type="file" id="filecv" @change="changeCv"/>
                             </div>
                         </div>
 
