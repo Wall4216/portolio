@@ -23,3 +23,7 @@ Route::controller(\App\Http\Controllers\API\AuthController::class)->group(functi
     Route::post('register','register');
 
 });
+
+Route::controller(\App\Http\Controllers\API\AboutController::class)->group(function (){
+   Route::get('edit_about','edit_about');
+});
