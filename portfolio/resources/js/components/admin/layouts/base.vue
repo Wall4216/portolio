@@ -6,7 +6,7 @@
 
 <template>
     <div class="base">
-        <header></header>
+        <Header></Header>
         <sidebar></sidebar>
         <h1>Admin layout</h1>
     </div>

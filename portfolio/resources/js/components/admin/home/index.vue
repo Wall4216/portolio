@@ -5,7 +5,7 @@ import Base from "../layouts/base.vue";
 const router = useRouter()
 const logout = () => {
     localStorage.removeItem('token')
-    router.push('/');
+    router.push('/login');
 }
 </script>
 
