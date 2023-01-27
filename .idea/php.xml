@@ -111,6 +111,7 @@
       <path value="$PROJECT_DIR$/portfolio/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/portfolio/vendor/guzzlehttp/promises" />
       <path value="$PROJECT_DIR$/portfolio/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/portfolio/vendor/intervention/image" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />
