@@ -29,4 +29,6 @@ Route::controller(\App\Http\Controllers\API\AboutController::class)->group(funct
    Route::post('update_about/{id}', 'update_about');
 });
 
-
+Route::controller(\App\Http\Controllers\API\ServiceController::class)->group(function () {
+   Route::get('get_all_service', 'get_all_service');
+});
