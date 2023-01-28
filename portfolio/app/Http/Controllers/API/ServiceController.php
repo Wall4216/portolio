@@ -16,4 +16,17 @@ class ServiceController extends Controller
         ], 200);
 
     }
+    public function create_service(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+
+        $service = new Service();
+        $service->name = $request->name;
+        $service->icon = $request->icon;
+        $service->description = $request->description;
+        $service->save();
+
+    }
 }
