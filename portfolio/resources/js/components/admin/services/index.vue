@@ -1,6 +1,50 @@
 <script setup>
 import Base from "../layouts/base.vue";
+import {onMounted, ref} from "vue";
+import axios from "axios";
 
+let services = ref([])
+
+const showModal = ref(false)
+const hideModal = ref(true)
+const editMode = ref(true)
+let form = ref({
+    name: '',
+    icon: '',
+    description: '',
+})
+onMounted(async () => {
+    getServices()
+})
+
+const getServices = async () => {
+    let response = await axios.get('/api/get_all_service')
+    services.value = response.data.services
+}
+
+const openModal = () => {
+    showModal.value = !showModal.value
+}
+
+const closeModal = () => {
+    showModal.value = !hideModal.value
+}
+const createService = async () => {
+    await axios.post('/api/create_service', form.value)
+        .then(response => {
+            getServices()
+            closeModal()
+            toast.fire ({
+                icon: "success",
+                title: "Service add"
+            })
+        })
+    const editModal = (service) => {
+        editMode.value = true
+        showModal.value = !showModal.value
+        form.value  = service
+    }
+}
 </script>
 
 <template>
@@ -14,8 +58,8 @@ import Base from "../layouts/base.vue";
                     <div class="titlebar_item">
                         <h1>Services</h1>
                     </div>
-                    <div class="titlebar_item">
-                        <div class="btn btn__open--modal">
+                    <div class="titlebar_item mt-2" style="margin-top: 100px">
+                        <div class="btn btn__open--modal" @click="openModal()">
                             New Service
                         </div>
                     </div>
@@ -56,15 +100,15 @@ import Base from "../layouts/base.vue";
                         <p>Actions</p>
                     </div>
                     <!-- item 1 -->
-                    <div class="service_table-items">
-                        <p>Backend Developer</p>
+                    <div class="service_table-items"  v-for="item in services" :key="item.id" v-if="services.length>0">
+                        <p>{{item.name}}</p>
                         <button class="service_table-icon">
-                            <i class=" fas fa-pencil-alt"></i>
+                            <i class=" {{item.icon}}"></i>
                         </button>
-                        <p>Sapiente odit ut ipsam neque dolorum et. Officiis error dicta pariatur quidem. Saepe dignissimos et at error dolores asperiores. Earum id sed ratione ducimus enim voluptate praesentium.
+                        <p>{{item.description}}
                         </p>
                         <div>
-                            <button class="btn-icon success">
+                            <button class="btn-icon success" @click="editModal(item)">
                                 <i class="fas fa-pencil-alt"></i>
                             </button>
                             <button class="btn-icon danger" >
@@ -72,51 +116,37 @@ import Base from "../layouts/base.vue";
                             </button>
                         </div>
                     </div>
-                    <!-- item 2 -->
-                    <div class="service_table-items">
-                        <p>Backend Developer</p>
-                        <button class="service_table-icon">
-                            <i class=" fas fa-pencil-alt"></i>
-                        </button>
-                        <p>Sapiente odit ut ipsam neque dolorum et. Officiis error dicta pariatur quidem. Saepe dignissimos et at error dolores asperiores. Earum id sed ratione ducimus enim voluptate praesentium.
-                        </p>
-                        <div>
-                            <button class="btn-icon success">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                            <button class="btn-icon danger" >
-                                <i class="far fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+
 
             </div>
             <!-------------- SERVICES MODAL --------------->
-            <div class="modal main__modal " >
+            <div class="modal main__modal " :class="{show: showModal}">
                 <div class="modal__content">
-                    <span class="modal__close btn__close--modal" >×</span>
+                    <span class="modal__close btn__close--modal" @click="closeModal()">×</span>
                     <h3 class="modal__title">Add Service</h3>
                     <hr class="modal_line"><br>
-                    <div>
-                        <p>Service Name</p>
-                        <input type="text" class="input" />
+                    <form @submit.prevent="createService()">
+                        <div>
+                            <p>Service Name</p>
+                            <input type="text" class="input" v-model="form.name"/>
 
-                        <p>Icon Class</p>
-                        <input type="text" class="input" />
-                        <span style="color:#006fbb;">Find your suitable icon: Font Awesome</span>
+                            <p>Icon Class</p>
+                            <input type="text" class="input" v-model="form.icon"/>
+                            <span style="color:#006fbb;">Find your suitable icon: Font Awesome</span>
 
-                        <p>Description</p>
-                        <textarea cols="10" rows="5"  ></textarea>
-                    </div>
-                    <br><hr class="modal_line">
-                    <div class="model__footer">
-                        <button class="btn mr-2 btn__close--modal" @click="closeModal()">
-                            Cancel
-                        </button>
-                        <button class="btn btn-secondary btn__close--modal ">Save</button>
-                    </div>
+                            <p>Description</p>
+                            <textarea cols="10" rows="5"  v-model="form.description"></textarea>
+                        </div>
+                        <br><hr class="modal_line">
+                        <div class="model__footer">
+                            <button class="btn mr-2 btn__close--modal" @click="closeModal()">
+                                Cancel
+                            </button>
+                            <button class="btn btn-secondary btn__close--modal ">Save</button>
+                        </div>
+                    </form>
                 </div>
+            </div>
             </div>
         </section>
         <div class="main__content">
