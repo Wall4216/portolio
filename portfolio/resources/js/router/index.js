@@ -2,7 +2,7 @@ import {createRouter, createWebHistory} from "vue-router";
 
 import homeAdminIndex from '../components/admin/home/index.vue'
 import adminAboutIndex from "../components/admin/about/index.vue";
-
+import adminServiceIndex from "../components/admin/service/index.vue"
 import homePageIndex from '../components/pages/home/index.vue'
 
 import notFound from "../components/notFound.vue";
@@ -26,11 +26,20 @@ const routes  = [
         }
     },
     {
+        path: '/admin/services',
+        name: 'adminService',
+        component: adminServiceIndex,
+        meta: {
+            requiresAuth: true
+        }
+
+    },
+    {
         path: '/',
         name: 'Hone',
         component: homePageIndex,
         meta: {
-            requires: false
+            requiresAuth: false
         }
     },
     {
@@ -42,6 +51,7 @@ const routes  = [
         }
 
     },
+
     {
         path: '/:pathMath(.*)*',
         component: notFound,
