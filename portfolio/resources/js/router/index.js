@@ -4,7 +4,6 @@ import homeAdminIndex from '../components/admin/home/index.vue'
 import adminAboutIndex from "../components/admin/about/index.vue";
 import adminServiceIndex from "../components/admin/services/index.vue"
 import homePageIndex from '../components/pages/home/index.vue'
-
 import notFound from "../components/notFound.vue";
 import login from "../components/auth/login.vue";
 const routes  = [

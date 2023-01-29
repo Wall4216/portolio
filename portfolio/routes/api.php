@@ -30,6 +30,9 @@ Route::controller(\App\Http\Controllers\API\AboutController::class)->group(funct
 });
 
 Route::controller(\App\Http\Controllers\API\ServiceController::class)->group(function () {
-   Route::get('get_all_service', 'get_all_service');
-   Route::post('create_service', 'create_service');
+    Route::get('display_all_service', 'index');
+    Route::post('create_service', 'create');
+    Route::post('update_service/{id}', 'update');
+    Route::get('/delete_service/{id}', 'delete');
+
 });
