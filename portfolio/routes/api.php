@@ -36,3 +36,7 @@ Route::controller(\App\Http\Controllers\API\ServiceController::class)->group(fun
     Route::get('/delete_service/{id}', 'delete');
 
 });
+
+Route::controller(\App\Http\Controllers\API\SkillController::class)->group(function () {
+    Route::get('/get_all_skill', 'get_all_skill');
+});
