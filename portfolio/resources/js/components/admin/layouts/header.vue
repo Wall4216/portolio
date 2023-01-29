@@ -31,7 +31,7 @@ const logout = () => {
                 <img class="header_profile-img" src="assets/img/avatar.jpg" alt=""/>
             </div>
             <p class="header_profile-name">
-                Zander Ford
+                Профиль
             </p>
 
         </div>
@@ -55,17 +55,17 @@ const logout = () => {
                 <ul class="header_profile-name--nav--list">
                     <li class="header_profile-name--nav--item">
                         <a class="header_profile-name--nav--link" href="#">
-                            Profile
+                            Профиль
                         </a>
                     </li>
                     <li class="header_profile-name--nav--item">
                         <a class="header_profile-name--nav--link" href="#">
-                            Message
+                            Сообщения
                         </a>
                     </li>
                     <li class="header_profile-name--nav--item">
                         <a class="header_profile-name--nav--link" href="#" @click="logout">
-                            Logout
+                            Выйти
                         </a>
                     </li>
                 </ul>

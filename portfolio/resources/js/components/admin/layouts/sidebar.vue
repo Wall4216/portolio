@@ -11,7 +11,7 @@
                                 <i class="fas fa-home nav__link--icon"> </i>
                             </span>
                         <span class="nav_link--span--navname">
-                                Home
+                                Главная страница
                             </span>
                     </router-link>
                 </li>
@@ -21,7 +21,7 @@
                                 <i class="fas fa-home nav__link--icon"> </i>
                             </span>
                         <span class="nav_link--span--navname">
-                                About Us
+                                О мне
                             </span>
                     </router-link>
                 </li>
@@ -31,19 +31,19 @@
                                 <i class="fas fa-home nav__link--icon"> </i>
                             </span>
                         <span class="nav_link--span--navname">
-                                Services
+                                Сервисы
                             </span>
                     </router-link>
                 </li>
                 <li class="nav_item">
-                    <a class="nav_link " href="skill.html">
+                    <router-link class="nav_link " to="/admin/skills">
                             <span class="nav_link--span--icon">
                                 <i class="fas fa-home nav__link--icon"> </i>
                             </span>
                         <span class="nav_link--span--navname">
-                                Skills
+                                Умения
                             </span>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="nav_item">
                     <a class="nav_link " href="education.html">
