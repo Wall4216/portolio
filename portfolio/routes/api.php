@@ -43,3 +43,9 @@ Route::controller(\App\Http\Controllers\API\SkillController::class)->group(funct
     Route::post('/update_skill/{id}', 'update_skill');
     Route::get('delete_skill/{id}','delete');
 });
+Route::controller(\App\Http\Controllers\API\Edu::class)->group(function () {
+    Route::get('display_all_education', 'get_all_education');
+    Route::post('create_education', 'create');
+    Route::post('update_education/{id}', 'update');
+    Route::get('delete_education/{id}', 'delete');
+    });
