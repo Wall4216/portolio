@@ -44,6 +44,47 @@ const  createSkill  = async () =>{
             })
         })
 }
+const editModal = (item) => {
+    editMode.value = true
+    showModal.value = !showModal.value
+    form.value = item
+}
+
+const updateSkill = async () => {
+    await axios.post('/api/update_skill/' + form.value.id, form.value)
+        .then(() => {
+            getSkills()
+            closeModal()
+            toast.fire({
+                icon: "success",
+                title: "Success boyyyyyyyyyy..."
+            })
+        })
+}
+const  deleteSkill = (id) =>{
+    Swal.fire({
+        title:"Are you sure ? ",
+        text: "You can't go back",
+        icon: "warning",
+        showCancelButton:true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor:'#d33',
+        confirmButtonText: 'Yes , delete it ! '
+    })
+        .then((result)=>{
+            if (result.value){
+                axios.get('/api/delete_skill/'+id)
+                    .then(() => {
+                        Swal.fire(
+                            'Delete',
+                            'Skill deleted successfully',
+                            'success'
+                        )
+                        getSkills()
+                    })
+            }
+        })
+}
 </script>
 
 <template>
@@ -112,10 +153,10 @@ const  createSkill  = async () =>{
                             </div>
                             <p v-if="item.service"> {{item.service.name}}</p>
                             <div>
-                                <button class="btn-icon success">
+                                <button class="btn-icon success" @click="editModal(item)">
                                     <i class="fas fa-pencil-alt"></i>
                                 </button>
-                                <button class="btn-icon danger" >
+                                <button class="btn-icon danger" @click="deleteSkill(item.id)">
                                     <i class="far fa-trash-alt"></i>
                                 </button>
                             </div>
@@ -128,9 +169,10 @@ const  createSkill  = async () =>{
                 <div class="modal main__modal " :class="{show: showModal}">
                     <div class="modal__content">
                         <span class="modal__close btn__close--modal" @click="closeModal()">×</span>
-                        <h3 class="modal__title">Add Skill</h3>
+                        <h3 class="modal__title" v-show="editMode == false">Add Skill</h3>
+                        <h3 class="modal__title" v-show="editMode == false">Update Skill</h3>
                         <hr class="modal_line"><br>
-                        <form @submit.prevent="createSkill()">
+                        <form @submit.prevent="editMode ? updateSkill() : createSkill()">
                         <div>
                             <p>Name</p>
                             <input type="text" class="input" v-model="form.name"/>
@@ -151,7 +193,8 @@ const  createSkill  = async () =>{
                             <button class="btn mr-2 btn__close--modal" @click="closeModal()">
                                 Cancel
                             </button>
-                            <button class="btn btn-secondary btn__close--modal ">Save</button>
+                            <button class="btn btn-secondary btn__close--modal " v-show="editMode == false">Save</button>
+                            <button class="btn btn-secondary btn__close--modal " v-show="editMode == true">Update</button>
                         </div>
                         </form>
                     </div>

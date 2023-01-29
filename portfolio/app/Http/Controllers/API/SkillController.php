@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 
@@ -24,5 +25,23 @@ class SkillController extends Controller
         $skill->proficiency = $request->proficiency;
         $skill->service_id = $request->service_id;
         $skill->save();
+    }
+    public function update_skill(Request $request, $id)
+    {
+        $skill = Skill::find($id);
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+        $skill->name = $request->name;
+        $skill->proficiency = $request->proficiency;
+        $skill->service_id = $request->service_id;
+        $skill->save();
+
+    }
+
+    public  function  delete(Request   $request, $id)
+    {
+        $skill = Skill::findOrFail($id);
+        $skill->delete();
     }
 }
