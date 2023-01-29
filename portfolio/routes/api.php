@@ -39,4 +39,5 @@ Route::controller(\App\Http\Controllers\API\ServiceController::class)->group(fun
 
 Route::controller(\App\Http\Controllers\API\SkillController::class)->group(function () {
     Route::get('/get_all_skill', 'get_all_skill');
+    Route::post('/create_skill', 'create_skill');
 });
