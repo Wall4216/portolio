@@ -89,7 +89,7 @@ const saveProject = async () => {
                         <div class="wrapper_right ">
                             <div class="card">
                                 <div class="project_img-container">
-                                    <img :src="getPhoto()" class="project_img">
+                                    <img :src="getPhoto()" class="project_img" alt="">
                                 </div>
                                 <br>
                                 <input type="file" id="fileimg" @change="changePhoto"/>
