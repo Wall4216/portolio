@@ -83,8 +83,8 @@
                 <div class="modal main__modal " :class="{show: showModal}" >
                     <div class="modal__content">
                         <span class="modal__close btn__close--modal" @click="closeModal()" >×</span>
-                        <h3 class="modal__title" v-show="editMode == false ">Add Service</h3>
-                        <h3 class="modal__title" v-show="editMode == true ">Update Service</h3>
+                        <h3 class="modal__title" v-show="editMode === false ">Add Service</h3>
+                        <h3 class="modal__title" v-show="editMode === true ">Update Service</h3>
                         <hr class="modal_line"><br>
 
                         <form  @submit.prevent="!editMode ? ServiceUpdate() : ServiceCreate() ">

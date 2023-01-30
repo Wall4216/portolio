@@ -48,4 +48,10 @@ Route::controller(\App\Http\Controllers\API\Edu::class)->group(function () {
     Route::post('create_education', 'create_education');
     Route::post('update_education/{id}', 'update');
     Route::get('delete_education/{id}', 'delete');
-    });
+});
+Route::controller(\App\Http\Controllers\API\ExperienceController::class)->group(function () {
+    Route::get('display_all_experience', 'get_all_experience');
+    Route::post('create_experience', 'create_experience');
+    Route::post('update_experience/{id}', 'update');
+    Route::get('delete_experience/{id}', 'delete');
+});
