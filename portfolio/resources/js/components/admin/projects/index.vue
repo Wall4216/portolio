@@ -86,7 +86,6 @@
 <script setup>
 import Base from "../layouts/base.vue";
 import { onMounted, ref} from "vue";
-import axios from "axios";
 import router from "@/router";
 
 let projects  = ref([])
