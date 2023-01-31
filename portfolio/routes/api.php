@@ -58,5 +58,7 @@ Route::controller(\App\Http\Controllers\API\ExperienceController::class)->group(
 Route::controller(\App\Http\Controllers\API\ProjectController::class)->group(function () {
     Route::get('display_all_project', 'get_all_project');
     Route::post('/add_project', 'add_project');
-    Route::post('/get_edit_project/{id}', 'get_edit_project');
+    Route::get('/get_edit_project/{id}', 'get_edit_project');
+    Route::post('/update_project/{id}', 'update_project');
+    Route::get('/delete_project/{id}', 'delete_project');
 });

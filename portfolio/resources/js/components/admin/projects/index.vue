@@ -68,7 +68,7 @@
                                 <button class="btn-icon success" @click="onEdit(item.id)">
                                     <i class="fas fa-pencil-alt"></i>
                                 </button>
-                                <button class="btn-icon danger" >
+                                <button class="btn-icon danger" @click="deleteProject(item.id)">
                                     <i class="far fa-trash-alt"></i>
                                 </button>
                             </div>
@@ -116,6 +116,31 @@ const newProject = () => {
 
 const onEdit = (id) => {
     router.push('/admin/projects/edit/' + id)
+}
+
+const deleteProject = (id) => {
+    Swal.fire({
+        title:"Остановись...",
+        text:"Остановись подумай",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: "Yes, delete!",
+    })
+        .then((result) => {
+            if(result.value) {
+                axios.get('/api/delete_project'+id)
+                    .then(()=>{
+                        Swal.fire(
+                            'Delete',
+                            "Project delete successfully",
+                            'success'
+                        )
+                        getProjects()
+                    })
+            }
+    })
 }
 </script>
 

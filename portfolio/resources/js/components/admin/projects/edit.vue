@@ -1,6 +1,9 @@
 <script setup>
 import Base from "../layouts/base.vue";
 import {onMounted, ref} from "vue";
+import {useRouter} from "vue-router";
+
+const router = useRouter()
 onMounted(async () => {
     getsingleProject()
 })
@@ -21,6 +24,7 @@ const props = defineProps({
  {
      let response = await axios.get(`api/get_edit_project/${props.id}`)
      console.log('response', response)
+     form.value = response.data.project
  }
 const getPhoto = () => {
     let photo  = "/img/upload/avatar.png"
@@ -32,6 +36,43 @@ const getPhoto = () => {
         }
     }
     return  photo;
+}
+const  changePhoto = (e) => {
+    let file = e.target.files[0];
+    let reader  = new FileReader();
+    let limit  = 1024*1024*2
+    if (file['size'] > limit){
+        Swal({
+            icon:'n new error',
+            title:'Ooops...',
+            text:'You are uploading a large file'
+        })
+        return false;
+    }
+    reader.onloadend = () => {
+        form.value.photo   = reader.result
+    }
+    reader.readAsDataURL(file)
+}
+const saveProject = async () => {
+    await axios.post('/api/add_project', form.value)
+        .then((response) => {
+            router.push('/admin/projects')
+            toast.fire({
+                icon: "success",
+                title: "Success boyyyyyyyyy...."
+            })
+        })
+}
+const updateProject = async () => {
+    await axios.get(`/api/update_project/${form.value.id}`, form.value)
+        .then(response => {
+            router.push('/admin/projects')
+        toast.fire({
+            icon: "success",
+            title: "Update boy.........."
+        })
+    })
 }
 </script>
 
@@ -50,7 +91,7 @@ const getPhoto = () => {
                             <h1>Edit Project</h1>
                         </div>
                         <div class="titlebar_item">
-                            <div class="btn btn-secondary">
+                            <div class="btn btn-secondary" @click="updateProject()">
                                 Update Project
                             </div>
                         </div>
@@ -77,7 +118,7 @@ const getPhoto = () => {
                                     <img :src="getPhoto()" alt="" class="project_img">
                                 </div>
                                 <br>
-                                <input type="file" id="fileimg" />
+                                <input type="file" id="fileimg" @change="changePhoto"/>
                                 <br><br><br>
                             </div>
                         </div>
@@ -88,7 +129,7 @@ const getPhoto = () => {
 
                         </div>
                         <div class="titlebar_item">
-                            <div class="btn btn-secondary">
+                            <div class="btn btn-secondary" @click="updateProject()">
                                 Update Project
                             </div>
                         </div>
