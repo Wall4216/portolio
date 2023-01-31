@@ -1,13 +1,12 @@
 <template>
-    <Base />
-    <!--==================== MAIN ====================-->
+    <Base/>
+
     <main class="main">
         <!-- Side Nav Dummy-->
         <div class="main__sideNav"></div>
         <!-- End Side Nav -->
         <!-- Main Content -->
         <div class="main__content">
-            <!--==================== PROJECTS ====================-->
             <section class="projects section" id="projects">
                 <div class="skills_container">
                     <div class="titlebar">
@@ -15,7 +14,7 @@
                             <h1>Projects </h1>
                         </div>
                         <div class="titlebar_item">
-                            <div class="btn btn__open--modal">
+                            <div class="btn btn__open--modal" @click="newProject()">
                                 New Project
                             </div>
                         </div>
@@ -79,23 +78,30 @@
 
                 </div>
             </section>
+
+            <div class="main__content">
+            </div>
         </div>
     </main>
 </template>
 
+<script>
+export default {
+    name: "index"
+}
+</script>
+
+
 <script setup>
 import Base from "../layouts/base.vue";
 import { onMounted, ref} from "vue";
-import router from "@/router";
-
+import {useRouter} from "vue-router";
+import axios from "axios";
 let projects  = ref([])
-
-
+const router = useRouter()
 onMounted(async () => {
     getProjects()
-
 })
-
 const  getProjects = async () => {
     let response = await  axios.get('/api/display_all_project')
     projects.value  = response.data.projects
@@ -105,8 +111,7 @@ const OurImage = (img) => {
     return "/img/upload/"+img
 }
 const newProject = () => {
-    router.push('/' +
-        'admin/projects/new')
+    router.push('/admin/projects/new')
 }
 
 const onEdit = (id) => {

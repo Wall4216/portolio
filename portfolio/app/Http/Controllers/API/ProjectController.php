@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -18,29 +19,16 @@ class ProjectController extends Controller
     }
     public function add_project(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-
-        ]);
-        $project = new \App\Models\Project();
+        $project = new Project();
         $project->title = $request->title;
         $project->description = $request->description;
         $project->link = $request->link;
-        $project->photo = $request->photo;
-        $project->save();
-    }
-
-    public  function  update(Request  $request, $id)
-    {
-        $project = \App\Models\Project::find($id);
-        $project->company = $request->company;
-        $project->period = $request->period;
-        if ($project->photo != $request->photo) {
+        if ($request->photo) {
             $strpos = strpos($request->photo, ';');
             $sub = substr($request->photo, 0, $strpos);
             $explode = explode('/', $sub)[1];
             $name = time() . "." . $explode;
-            $img = Image::make($request->photo)->resize(700, 500);//intervention package
+            $img = Image::make($request->photo)->resize(200, 200);//intervention package
             $upload_path = public_path() . "/img/upload/";
             $image = $upload_path . $project->photo;
             $img->save($upload_path . $name);
@@ -52,6 +40,15 @@ class ProjectController extends Controller
             $project->photo = $name;
             $project->save();
         }
+    }
+
+
+    public function get_edit_project($id)
+    {
+        $project = Project::find($id);
+        return response()->json([
+            'project' => $project
+        ], 200);
     }
 
 
