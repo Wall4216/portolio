@@ -8,6 +8,7 @@ import adminEducationIndex from "../components/admin/educations/index.vue";
 import adminExperienceIndex from "../components/admin/experiences/index.vue";
 import adminProjectIndex from "../components/admin/projects/index.vue"
 import adminProjectNew from "../components/admin/projects/new.vue"
+import adminProjectEdit from "../components/admin/projects/edit.vue"
 import homePageIndex from '../components/pages/home/index.vue';
 import notFound from "../components/notFound.vue";
 import login from "../components/auth/login.vue";
@@ -76,6 +77,14 @@ const routes  = [
         path: '/admin/projects/new',
         name: 'adminProjectNew',
         component: adminProjectNew,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/admin/projects/edit',
+        name: 'adminProjectEdit',
+        component: adminProjectEdit,
         meta: {
             requiresAuth: true
         }
