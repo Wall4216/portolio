@@ -82,12 +82,13 @@ const routes  = [
         }
     },
     {
-        path: '/admin/projects/edit',
+        path: '/admin/projects/edit/:id',
         name: 'adminProjectEdit',
         component: adminProjectEdit,
         meta: {
             requiresAuth: true
-        }
+        },
+        props: true
     },
     {
         path: '/',
