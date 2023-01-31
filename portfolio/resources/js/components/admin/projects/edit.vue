@@ -1,10 +1,16 @@
 <script setup>
 import Base from "../layouts/base.vue";
-import {onMounted} from "vue";
+import {onMounted, ref} from "vue";
 onMounted(async () => {
     getsingleProject()
 })
-
+let form = ref({
+    id: '',
+    title: '',
+    description: '',
+    link: '',
+    photo: ''
+})
 const props = defineProps({
     id: {
         type: String,
@@ -16,6 +22,17 @@ const props = defineProps({
      let response = await axios.get(`api/get_edit_project/${props.id}`)
      console.log('response', response)
  }
+const getPhoto = () => {
+    let photo  = "/img/upload/avatar.png"
+    if (form.value.photo){
+        if (form.value.photo.indexOf('base64') != -1 ){
+            photo = form.value.photo
+        }else{
+            photo = '/img/upload/' + form.value.photo;
+        }
+    }
+    return  photo;
+}
 </script>
 
 <template>
@@ -43,13 +60,13 @@ const props = defineProps({
                             <div class="card">
 
                                 <p>Title</p>
-                                <input type="text" class="input" />
+                                <input type="text" class="input" v-model="form.title"/>
 
                                 <p>Description</p>
-                                <textarea cols="10" rows="5"  ></textarea>
+                                <textarea cols="10" rows="5" v-model="form.description" ></textarea>
 
                                 <p>Link</p>
-                                <input type="text" class="input" />
+                                <input type="text" class="input" v-model="form.link"/>
 
                             </div>
                         </div>
@@ -57,7 +74,7 @@ const props = defineProps({
                         <div class="wrapper_right ">
                             <div class="card">
                                 <div class="project_img-container">
-                                    <img src="/assets/img/avatar.jpg" alt="" class="project_img">
+                                    <img :src="getPhoto()" alt="" class="project_img">
                                 </div>
                                 <br>
                                 <input type="file" id="fileimg" />

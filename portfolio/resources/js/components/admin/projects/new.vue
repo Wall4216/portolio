@@ -14,7 +14,7 @@ let form = ref({
 const getPhoto = () => {
     let photo  = "/img/upload/avatar.png"
     if (form.value.photo){
-        if (form.value.photo.indexOf('base64') !== -1 ){
+        if (form.value.photo.indexOf('base64') != -1 ){
             photo = form.value.photo
         }else{
             photo = '/img/upload/' + form.value.photo;
