@@ -96,11 +96,11 @@ const  deleteEducation = (id) =>{
                 <div class="skills_container">
                     <div class="titlebar">
                         <div class="titlebar_item">
-                            <h1>Educations </h1>
+                            <h1>Образование </h1>
                         </div>
                         <div class="titlebar_item">
                             <div class="btn btn__open--modal" @click="openModal()">
-                                New Education
+                                Добавить образование
                             </div>
                         </div>
                     </div>
@@ -115,7 +115,7 @@ const  deleteEducation = (id) =>{
                                 <ul class="table_filter-list">
                                     <li>
                                         <p class="table_filter-link table_filter-link--active">
-                                            All
+                                            Все
                                         </p>
                                     </li>
                                 </ul>
@@ -125,21 +125,21 @@ const  deleteEducation = (id) =>{
                         <div class="table_search">
                             <div class="table_search-wrapper">
                                 <select class="table_search-select" name="" id="">
-                                    <option value="">Filter</option>
+                                    <option value="">Фильтр</option>
                                 </select>
                             </div>
                             <div class="relative">
                                 <i class="table_search-input--icon fas fa-search "></i>
-                                <input class="table_search--input" type="text" placeholder="Search Education">
+                                <input class="table_search--input" type="text" placeholder="Поиск">
                             </div>
                         </div>
 
                         <div class="education_table-heading">
-                            <p>Institution</p>
-                            <p>Period</p>
-                            <p>Degree</p>
-                            <p>Department</p>
-                            <p>Actions</p>
+                            <p>Университет</p>
+                            <p>Период</p>
+                            <p>Степень</p>
+                            <p>Департамент</p>
+                            <p>Возможности</p>
                         </div>
                         <!-- item 1 -->
                         <div class="education_table-items" v-for="item in educations" :key="item.id" v-if="educations.length > 0">
@@ -186,10 +186,10 @@ const  deleteEducation = (id) =>{
                             <br><hr class="modal_line">
                             <div class="model__footer">
                                 <button class="btn mr-2 btn__close--modal" @click="closeModal()">
-                                    Cancel
+                                    Закрыть
                                 </button>
-                                <button class="btn btn-secondary btn__close--modal " v-show="editMode == false">Save</button>
-                                <button class="btn btn-secondary btn__close--modal " v-show="editMode == true">Update</button>
+                                <button class="btn btn-secondary btn__close--modal " v-show="editMode == false">Сохранить</button>
+                                <button class="btn btn-secondary btn__close--modal " v-show="editMode == true">Редактировать</button>
                             </div>
                         </form>
                     </div>

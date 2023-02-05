@@ -11,11 +11,11 @@
                 <div class="skills_container">
                     <div class="titlebar">
                         <div class="titlebar_item">
-                            <h1>Projects </h1>
+                            <h1>Проекты </h1>
                         </div>
                         <div class="titlebar_item">
                             <div class="btn btn__open--modal" @click="newProject()">
-                                New Project
+                                Новый проект
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                                 <ul class="table_filter-list">
                                     <li>
                                         <p class="table_filter-link table_filter-link--active">
-                                            All
+                                            Все
                                         </p>
                                     </li>
                                 </ul>
@@ -40,21 +40,21 @@
                         <div class="table_search">
                             <div class="table_search-wrapper">
                                 <select class="table_search-select" name="" id="">
-                                    <option value="">Filter</option>
+                                    <option value="">Фильтр</option>
                                 </select>
                             </div>
                             <div class="relative">
                                 <i class="table_search-input--icon fas fa-search "></i>
-                                <input class="table_search--input" type="text" placeholder="Search Project">
+                                <input class="table_search--input" type="text" placeholder="Поиск">
                             </div>
                         </div>
 
                         <div class="project_table-heading">
-                            <p>Image</p>
-                            <p>Title</p>
-                            <p>Description</p>
-                            <p>Link</p>
-                            <p>Actions</p>
+                            <p>Фото</p>
+                            <p>Заголовок</p>
+                            <p>Описание</p>
+                            <p>Ссылка</p>
+                            <p>Возможности</p>
                         </div>
                         <!-- item 1 -->
                         <div class="project_table-items"  v-for="item in projects" :key="item.id" v-if="projects.length > 0">

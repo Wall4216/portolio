@@ -61,7 +61,7 @@
                                 <i class="fas fa-home nav__link--icon"> </i>
                             </span>
                         <span class="nav_link--span--navname">
-                                Experiences
+                                Опыт
                             </span>
                     </router-link>
                 </li>
@@ -71,7 +71,7 @@
                                 <i class="fas fa-home nav__link--icon"> </i>
                             </span>
                         <span class="nav_link--span--navname">
-                                Projects
+                                Проекты
                             </span>
                     </router-link>
                 </li>
@@ -81,20 +81,11 @@
                                 <i class="fas fa-home nav__link--icon"> </i>
                             </span>
                         <span class="nav_link--span--navname">
-                                Testimonial
+                                Свидетельство
                             </span>
                     </a>
                 </li>
-                <li class="nav_item">
-                    <a class="nav_link " href="#">
-                            <span class="nav_link--span--icon">
-                                <i class="fas fa-home nav__link--icon"> </i>
-                            </span>
-                        <span class="nav_link--span--navname">
-                                Messages
-                            </span>
-                    </a>
-                </li>
+
                 <li class="nav_item">
                     <router-link class="nav_link " to="/admin/users">
                             <span class="nav_link--span--icon">
@@ -105,16 +96,7 @@
                             </span>
                     </router-link>
                 </li>
-                <li class="nav_item">
-                    <a class="nav_link " href="#">
-                            <span class="nav_link--span--icon">
-                                <i class="fas fa-home nav__link--icon"> </i>
-                            </span>
-                        <span class="nav_link--span--navname">
-                                Setting
-                            </span>
-                    </a>
-                </li>
+
 
             </ul>
         </div>

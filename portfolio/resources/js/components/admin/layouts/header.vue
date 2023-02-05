@@ -19,7 +19,7 @@ const logout = () => {
     <header class="header" id="header">
         <div class="header_logo " >
             <i class="header_collapse-btn fas fa-align-left"></i>
-            <img class="logo_img" src="assets/img/logo.png"
+            <img class="logo_img" src="public/img/upload/avatar.png"
             />
         </div>
         <div class="header_search">
@@ -28,7 +28,7 @@ const logout = () => {
         </div>
         <div class="header_profile " @click="openNavheader">
             <div class="header_profile-imgWrapper " >
-                <img class="header_profile-img" src="assets/img/avatar.jpg" alt=""/>
+                <img class="header_profile-img" src="public/img/upload/avatar.png" alt=""/>
             </div>
             <p class="header_profile-name">
                 Профиль

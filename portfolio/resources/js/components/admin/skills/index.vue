@@ -100,11 +100,11 @@ const  deleteSkill = (id) =>{
                 <div class="skills_container">
                     <div class="titlebar">
                         <div class="titlebar_item">
-                            <h1>Skills </h1>
+                            <h1>Умение </h1>
                         </div>
                         <div class="titlebar_item">
                             <div class="btn btn__open--modal" @click="openModal()">
-                                New Skill
+                                Добавить умение
                             </div>
                         </div>
                     </div>
@@ -119,7 +119,7 @@ const  deleteSkill = (id) =>{
                                 <ul class="table_filter-list">
                                     <li>
                                         <p class="table_filter-link table_filter-link--active">
-                                            All
+                                            Все
                                         </p>
                                     </li>
                                 </ul>
@@ -129,20 +129,20 @@ const  deleteSkill = (id) =>{
                         <div class="table_search">
                             <div class="table_search-wrapper">
                                 <select class="table_search-select" name="" id="">
-                                    <option value="">Filter</option>
+                                    <option value="">Фильтр</option>
                                 </select>
                             </div>
                             <div class="relative">
                                 <i class="table_search-input--icon fas fa-search "></i>
-                                <input class="table_search--input" type="text" placeholder="Search Skill">
+                                <input class="table_search--input" type="text" placeholder="Поиск">
                             </div>
                         </div>
 
                         <div class="skill_table-heading">
-                            <p>Name</p>
-                            <p>Proficiency</p>
-                            <p>Service</p>
-                            <p>Actions</p>
+                            <p>Название</p>
+                            <p>Процент умения</p>
+                            <p>Сервис</p>
+                            <p>Возможности</p>
                         </div>
                         <!-- item 1 -->
                         <div class="skill_table-items" v-for="item in skills" :key="item.id" v-if="skills.length>0">
@@ -169,8 +169,8 @@ const  deleteSkill = (id) =>{
                 <div class="modal main__modal " :class="{show: showModal}">
                     <div class="modal__content">
                         <span class="modal__close btn__close--modal" @click="closeModal()">×</span>
-                        <h3 class="modal__title" v-show="editMode == false">Add Skill</h3>
-                        <h3 class="modal__title" v-show="editMode == false">Update Skill</h3>
+                        <h3 class="modal__title" v-show="editMode == false">Добавить</h3>
+                        <h3 class="modal__title" v-show="editMode == false">Редактировать</h3>
                         <hr class="modal_line"><br>
                         <form @submit.prevent="editMode ? updateSkill() : createSkill()">
                         <div>
@@ -193,8 +193,8 @@ const  deleteSkill = (id) =>{
                             <button class="btn mr-2 btn__close--modal" @click="closeModal()">
                                 Cancel
                             </button>
-                            <button class="btn btn-secondary btn__close--modal " v-show="editMode == false">Save</button>
-                            <button class="btn btn-secondary btn__close--modal " v-show="editMode == true">Update</button>
+                            <button class="btn btn-secondary btn__close--modal " v-show="editMode == false">Сохранить</button>
+                            <button class="btn btn-secondary btn__close--modal " v-show="editMode == true">Редактировать</button>
                         </div>
                         </form>
                     </div>

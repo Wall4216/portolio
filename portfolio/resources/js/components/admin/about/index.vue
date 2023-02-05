@@ -12,35 +12,35 @@
                 <div class="about_container">
                     <div class="titlebar">
                         <div class="titlebar_item">
-                            <h1>About Us</h1>
+                            <h1>О нас</h1>
                         </div>
                         <div class="titlebar_item">
                             <div class="btn btn-secondary" @click.prevent="updateAbout">
-                                Save Changes
+                                Сохранить
                             </div>
                         </div>
                     </div>
                     <div class="card_wrapper">
                         <div class="wrapper_left">
                             <div class="card">
-                                <p>Full Name</p>
+                                <p>ФИО</p>
                                 <input type="text" class="input" v-model="form.name"/>
 
                                 <p>Email</p>
                                 <input type="email" class="input" v-model="form.email"/>
 
-                                <p>Phone</p>
+                                <p>Телефон</p>
                                 <input type="text" class="input"  v-model="form.phone" />
 
-                                <p>Address</p>
+                                <p>Адресс</p>
                                 <input type="text" class="input" v-model="form.address"/>
 
-                                <p>Description</p>
+                                <p>Описание</p>
                                 <textarea cols="10" rows="5" v-model="form.description" ></textarea>
 
                             </div>
                             <div class="card">
-                                <p>Tagline</p>
+                                <p>подзаголовок</p>
                                 <input
                                     type="text"
                                     class="input"
@@ -68,7 +68,7 @@
                         </div>
                         <div class="titlebar_item">
                             <div class="btn btn-secondary" @click.prevent="updateAbout">
-                                Save Changes
+                                Сохранить
                             </div>
                         </div>
                     </div>

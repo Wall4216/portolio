@@ -12,11 +12,11 @@
                 <div class="services_container">
                     <div class="titlebar">
                         <div class="titlebar_item">
-                            <h1>Services</h1>
+                            <h1>Сервисы</h1>
                         </div>
                         <div class="titlebar_item">
                             <div class="btn btn__open--modal" @click="openModal()">
-                                New Service
+                                Новый сервис
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                                 <ul class="table_filter-list">
                                     <li>
                                         <p class="table_filter-link table_filter-link--active">
-                                            All
+                                            Все
                                         </p>
                                     </li>
                                 </ul>
@@ -40,20 +40,20 @@
                         <div class="table_search">
                             <div class="table_search-wrapper">
                                 <select class="table_search-select" name="" id="">
-                                    <option value="">Filter</option>
+                                    <option value="">Фильтр</option>
                                 </select>
                             </div>
                             <div class="relative">
                                 <i class="table_search-input--icon fas fa-search "></i>
-                                <input class="table_search--input" type="text" placeholder="Search Service">
+                                <input class="table_search--input" type="text" placeholder="Поиск">
                             </div>
                         </div>
 
                         <div class="service_table-heading">
-                            <p>Title</p>
-                            <p>Icon</p>
-                            <p>Description</p>
-                            <p>Actions</p>
+                            <p>Заголовок</p>
+                            <p>Иконка</p>
+                            <p>Описание</p>
+                            <p>Возможности</p>
                         </div>
                         <!-- item 1 -->
                         <div class="service_table-items"
@@ -89,23 +89,23 @@
 
                         <form  @submit.prevent="!editMode ? ServiceUpdate() : ServiceCreate() ">
                             <div>
-                                <p>Service Name</p>
+                                <p>Название</p>
                                 <input type="text" class="input" v-model="form.name" />
 
-                                <p>Icon Class</p>
+                                <p>Иконка</p>
                                 <input type="text" class="input"  v-model="form.icon"/>
                                 <span style="color:#006fbb;">Find your suitable icon: Font Awesome/Icon</span>
 
-                                <p>Description</p>
+                                <p>Описание</p>
                                 <textarea cols="10" rows="5"  v-model="form.description" ></textarea>
                             </div>
                             <br><hr class="modal_line">
                             <div class="model__footer">
                                 <button class="btn mr-2 btn__close--modal" @click="closeModal()">
-                                    Cancel
+                                    Закрыть
                                 </button>
-                                <button class="btn btn-secondary " v-show="editMode === false">Save</button>
-                                <button class="btn btn-secondary " v-show="editMode === true">Update</button>
+                                <button class="btn btn-secondary " v-show="editMode === false">Сохранить</button>
+                                <button class="btn btn-secondary " v-show="editMode === true">Редактировать</button>
                             </div>
                         </form>
                     </div>

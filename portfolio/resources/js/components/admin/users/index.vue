@@ -110,11 +110,11 @@ const deleteUser = async (id) => {
                 <div class="users_container">
                     <div class="titlebar">
                         <div class="titlebar_item">
-                            <h1>Users </h1>
+                            <h1>Пользователи </h1>
                         </div>
                         <div class="titlebar_item">
                             <div class="btn btn__open--modal" @click="openModel()">
-                                New User
+                                Добавить пользователя
                             </div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@ const deleteUser = async (id) => {
                                 <ul class="table_filter-list">
                                     <li>
                                         <p class="table_filter-link table_filter-link--active">
-                                            All
+                                            Все
                                         </p>
                                     </li>
                                 </ul>
@@ -139,20 +139,20 @@ const deleteUser = async (id) => {
                         <div class="table_search">
                             <div class="table_search-wrapper">
                                 <select class="table_search-select" name="" id="">
-                                    <option value="">Filter</option>
+                                    <option value="">Фильтр</option>
                                 </select>
                             </div>
                             <div class="relative">
                                 <i class="table_search-input--icon fas fa-search "></i>
-                                <input class="table_search--input" type="text" placeholder="Search User">
+                                <input class="table_search--input" type="text" placeholder="Поиск">
                             </div>
                         </div>
 
                         <div class="user_table-heading">
-                            <p>Photo</p>
-                            <p>Name</p>
-                            <p>Role</p>
-                            <p>Actions</p>
+                            <p>Фото</p>
+                            <p>Название</p>
+                            <p>Роль</p>
+                            <p>Возможности</p>
                         </div>
                         <!-- item 1 -->
                         <div class="user_table-items" v-for="item in users" :key="item.id" v-if="users.length > 0">
@@ -179,8 +179,8 @@ const deleteUser = async (id) => {
             <div class="modal main__modal " :class="{ show: showModal }">
                 <div class="modal__content">
                     <span class="modal__close btn__close--modal" @click="closeModal">×</span>
-                    <h3 class="modal__title" v-show="editMode == false">Add User</h3>
-                    <h3 class="modal__title" v-show="editMode == true">Update User</h3>
+                    <h3 class="modal__title" v-show="editMode == false">Добавить</h3>
+                    <h3 class="modal__title" v-show="editMode == true">Редактировать</h3>
                     <hr class="modal_line"><br>
                     <form @submit.prevent="editMode ? updateUser() : createUser()">
                         <div>
@@ -196,12 +196,12 @@ const deleteUser = async (id) => {
                             <p>Type</p>
                             <select class="inputSelect" name="" id="" v-model="form.type">
                                 <option disabled>Select Role</option>
-                                <option value="admin">Admin</option>
-                                <option value="user">Standard User</option>
+                                <option value="admin">Администратор</option>
+                                <option value="user">Стандартный пользователь</option>
                             </select>
 
-                            <p v-show="editMode == false">Password</p>
-                            <p v-show="editMode == true">Password (Leave blank if you don't want to change)</p>
+                            <p v-show="editMode == false">Пароль</p>
+                            <p v-show="editMode == true">Пароль</p>
                             <input  type="password" id="password" class="input" v-model="form.password">
                         </div>
                         <br><hr class="modal_line">
@@ -209,7 +209,7 @@ const deleteUser = async (id) => {
                             <button class="btn mr-2" @click="closeModal()">
                                 Cancel
                             </button>
-                            <button class="btn btn-secondary" @click="createUser">Save</button>
+                            <button class="btn btn-secondary" @click="createUser">Сохранить</button>
                         </div>
                     </form>
                 </div>

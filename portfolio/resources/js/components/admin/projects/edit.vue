@@ -88,11 +88,11 @@ const updateProject = async () => {
                 <div class="about_container">
                     <div class="titlebar">
                         <div class="titlebar_item">
-                            <h1>Edit Project</h1>
+                            <h1>Добавить проект</h1>
                         </div>
                         <div class="titlebar_item">
                             <div class="btn btn-secondary" @click="updateProject()">
-                                Update Project
+                                Редактировать проект
                             </div>
                         </div>
                     </div>
@@ -100,13 +100,13 @@ const updateProject = async () => {
                         <div class="wrapper_left">
                             <div class="card">
 
-                                <p>Title</p>
+                                <p>Заголовок</p>
                                 <input type="text" class="input" v-model="form.title"/>
 
-                                <p>Description</p>
+                                <p>Описание</p>
                                 <textarea cols="10" rows="5" v-model="form.description" ></textarea>
 
-                                <p>Link</p>
+                                <p>Ссылка</p>
                                 <input type="text" class="input" v-model="form.link"/>
 
                             </div>
@@ -130,7 +130,7 @@ const updateProject = async () => {
                         </div>
                         <div class="titlebar_item">
                             <div class="btn btn-secondary" @click="updateProject()">
-                                Update Project
+                                Редактировать
                             </div>
                         </div>
                     </div>

@@ -105,11 +105,11 @@ const  deleteExperience = (id) =>{
             <div class="experiences_container">
                 <div class="titlebar">
                     <div class="titlebar_item">
-                        <h1>Experiences </h1>
+                        <h1>Опыт </h1>
                     </div>
                     <div class="titlebar_item">
                         <div class="btn btn__open--modal" @click="openModal()">
-                            New Experience
+                           Добавить опыт
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@ const  deleteExperience = (id) =>{
                             <ul class="table_filter-list">
                                 <li>
                                     <p class="table_filter-link table_filter-link--active">
-                                        All
+                                        Все
                                     </p>
                                 </li>
                             </ul>
@@ -139,15 +139,15 @@ const  deleteExperience = (id) =>{
                         </div>
                         <div class="relative">
                             <i class="table_search-input--icon fas fa-search "></i>
-                            <input class="table_search--input" type="text" placeholder="Search Experience">
+                            <input class="table_search--input" type="text" placeholder="Поиск">
                         </div>
                     </div>
 
                     <div class="experience_table-heading">
-                        <p>Company</p>
-                        <p>Period</p>
-                        <p>Position</p>
-                        <p>Actions</p>
+                        <p>Компания</p>
+                        <p>Период</p>
+                        <p>Позиция</p>
+                        <p>Возможности</p>
                     </div>
                     <!-- item 1 -->
                     <div class="experience_table-items"  v-for="experience in experiences" :key="experience.id" v-if="experiences.length > 0">
@@ -171,24 +171,24 @@ const  deleteExperience = (id) =>{
             <div class="modal main__modal " :class="{ show: showModal}">
                 <div class="modal__content">
                     <span class="modal__close btn__close--modal" @click="closeModal()" >×</span>
-                    <h3 class="modal__title" v-show="editExperience == false">Add Experience</h3>
-                    <h3 class="modal__title" v-show="editMode == true">Update Experience</h3>
+                    <h3 class="modal__title" v-show="editExperience == false">Добавить</h3>
+                    <h3 class="modal__title" v-show="editMode == true">Редактировать</h3>
                     <hr class="modal_line"><br>
                     <form @submit.prevent="editMode ? updateExperience() : ExperienceCreate()">
                         <div>
-                            <p>Company</p>
+                            <p>Компания</p>
                             <input type="text" class="input" v-model="form.company" />
-                            <p>Period</p>
+                            <p>Период</p>
                             <input type="text" class="input" v-model="form.period"/>
-                            <p>Position</p>
+                            <p>Позиция</p>
                             <input type="text" class="input" v-model="form.position"/>
                         </div>
                         <br><hr class="modal_line">
                         <div class="model__footer">
                             <button class="btn mr-2 " @click="closeModal()">
-                                Cancel
+                                Закрыть
                             </button>
-                            <button class="btn btn-secondary btn__close--modal ">Save</button>
+                            <button class="btn btn-secondary btn__close--modal ">Сохранить</button>
                         </div>
                     </form>
                 </div>
