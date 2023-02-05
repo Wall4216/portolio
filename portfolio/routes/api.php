@@ -62,3 +62,9 @@ Route::controller(\App\Http\Controllers\API\ProjectController::class)->group(fun
     Route::post('/update_project/{id}', 'update_project');
     Route::get('/delete_project/{id}', 'delete_project');
 });
+Route::controller(\App\Http\Controllers\API\UserController::class)->group(function () {
+    Route::get('get_all_user', 'get_all_user');
+    Route::post('/create_user', 'create_user');
+    Route::post('/update_user/{id}', 'update_user');
+    Route::get('/delete_user/{id}', 'delete_user');
+});
