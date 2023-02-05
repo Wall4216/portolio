@@ -54,9 +54,9 @@ const logout = () => {
                 </span>
                 <ul class="header_profile-name--nav--list">
                     <li class="header_profile-name--nav--item">
-                        <a class="header_profile-name--nav--link" href="#">
+                        <router-link to="/admin/users/profile" class="header_profile-name--nav--link" >
                             Профиль
-                        </a>
+                        </router-link>
                     </li>
                     <li class="header_profile-name--nav--item">
                         <a class="header_profile-name--nav--link" href="#">

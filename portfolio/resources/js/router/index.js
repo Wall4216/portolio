@@ -10,6 +10,7 @@ import adminProjectIndex from "../components/admin/projects/index.vue"
 import adminProjectNew from "../components/admin/projects/new.vue"
 import adminProjectEdit from "../components/admin/projects/edit.vue"
 import adminUserIndex from "../components/admin/users/index.vue";
+import adminUserProfile from "../components/admin/users/profile.vue";
 import homePageIndex from '../components/pages/home/index.vue';
 import notFound from "../components/notFound.vue";
 import login from "../components/auth/login.vue";
@@ -86,6 +87,14 @@ const routes  = [
         path: '/admin/users',
         name: 'adminUserIndex',
         component: adminUserIndex,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/admin/users/profile',
+        name: 'adminUserProfile',
+        component: adminUserProfile,
         meta: {
             requiresAuth: true
         }
