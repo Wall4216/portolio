@@ -74,7 +74,7 @@ class UserController extends Controller
                 @unlink($image);
             }
         }  else {
-            $name = 'avatar.jpg';
+            $name = 'avatar.png';
         }
         $user->photo = $name;
         $user->save();
